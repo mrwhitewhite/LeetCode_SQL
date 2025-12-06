@@ -4,6 +4,10 @@ use leetcode;
 SELECT
     *
 FROM
-    TableName;
+    Employee;
+SELECT
+    *
+FROM
+    Bonus;
 
 -- Queries here
