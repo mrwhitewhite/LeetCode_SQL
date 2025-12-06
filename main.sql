@@ -1,6 +1,6 @@
-use main;
+use leetcode;
 
 -- show table
-SELECT * FROM customer;
+SELECT * FROM TableName;
 
 -- Queries here
