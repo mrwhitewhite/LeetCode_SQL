@@ -4,6 +4,6 @@ use leetcode;
 SELECT
     *
 FROM
-    TableName;
+    Activity;
 
 -- Queries here
