@@ -8,23 +8,9 @@ FROM
 
 -- Queries here
 SELECT
-    id
+    Today.id
 FROM
-    (
-        SELECT
-            id,
-            recordDate,
-            temperature,
-            old_tmp
-        FROM
-            (
-                SELECT
-                    DATE_ADD(recordDate, INTERVAL 1 DAY) AS 'join_date',
-                    temperature AS "old_tmp"
-                FROM
-                    Weather
-            ) as yest
-            RIGHT JOIN Weather ON yest.join_date = Weather.recordDate
-    ) as T_joined
+    Weather AS Today
+    INNER JOIN Weather as Yest ON Today.recordDate = DATE_ADD(Yest.recordDate, INTERVAL 1 DAY)
 WHERE
-    temperature > old_tmp;
+    Today.temperature > Yest.temperature
