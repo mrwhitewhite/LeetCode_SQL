@@ -1,28 +1,11 @@
 use leetcode;
 
 -- show table
-SELECT
-    *
-FROM
-    Visits;
+SELECT * FROM Sales;
 
-SELECT
-    *
-FROM
-    Transactions;
+SELECT * FROM Product;
 
 -- Queries here
-SELECT
-    customer_id,
-    COUNT(customer_id) AS count_no_trans
-FROM
-    Visits
-WHERE
-    Visits.visit_id NOT IN (
-        SELECT
-            DISTINCT(visit_id)
-        FROM
-            Transactions
-    )
-GROUP BY
-    customer_id
+SELECT product_name, year, price
+FROM Sales
+    LEFT JOIN Product ON Sales.product_id = Product.product_id;
