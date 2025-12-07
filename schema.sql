@@ -3,10 +3,11 @@ CREATE DATABASE IF NOT EXISTS leetcode DEFAULT CHARACTER SET utf8 DEFAULT COLLAT
 USE leetcode;
 
 -- SCHEMA here
-Create table If Not Exists World (name varchar(255), continent varchar(255), area int, population int, gdp bigint);
-Truncate table World;
-insert into World (name, continent, area, population, gdp) values ('Afghanistan', 'Asia', '652230', '25500100', '20343000000');
-insert into World (name, continent, area, population, gdp) values ('Albania', 'Europe', '28748', '2831741', '12960000000');
-insert into World (name, continent, area, population, gdp) values ('Algeria', 'Africa', '2381741', '37100000', '188681000000');
-insert into World (name, continent, area, population, gdp) values ('Andorra', 'Europe', '468', '78115', '3712000000');
-insert into World (name, continent, area, population, gdp) values ('Angola', 'Africa', '1246700', '20609294', '100990000000');
+Create table If Not Exists Customer (id int, name varchar(25), referee_id int);
+Truncate table Customer;
+insert into Customer (id, name, referee_id) values ('1', 'Will', NULL);
+insert into Customer (id, name, referee_id) values ('2', 'Jane', NULL);
+insert into Customer (id, name, referee_id) values ('3', 'Alex', '2');
+insert into Customer (id, name, referee_id) values ('4', 'Bill', NULL);
+insert into Customer (id, name, referee_id) values ('5', 'Zack', '1');
+insert into Customer (id, name, referee_id) values ('6', 'Mark', '2');

@@ -1,11 +1,11 @@
 use leetcode;
 
 -- show table
-SELECT * FROM World;
+SELECT * FROM Customer;
 
 -- Queries here
-SELECT name, population, area
-from World
+SELECT name
+FROM Customer
 WHERE
-    area >= 3000000
-    OR population >= 25000000;
+    referee_id IS NULL
+    OR referee_id != 2;
