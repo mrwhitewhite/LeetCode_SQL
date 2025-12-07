@@ -4,20 +4,23 @@ use leetcode;
 SELECT
     *
 FROM
-    Employee;
-
-SELECT
-    *
-FROM
-    Bonus;
+    Activity;
 
 -- Queries here
 SELECT
-    name,
-    bonus
+    machine_id,
+    ROUND(AVG(processing_time), 3) as 'processing_time'
 FROM
-    Employee
-    LEFT JOIN Bonus USING(empId)
-WHERE
-    bonus IS NULL
-    OR bonus < 1000
+    (
+        SELECT
+            machine_id,
+            process_id,
+            MAX(timestamp) - MIN(timestamp) as "processing_time"
+        FROM
+            Activity
+        GROUP BY
+            machine_id,
+            process_id
+    ) AS T_agg1
+GROUP BY
+    machine_id

@@ -3,13 +3,17 @@ CREATE DATABASE IF NOT EXISTS leetcode DEFAULT CHARACTER SET utf8 DEFAULT COLLAT
 USE leetcode;
 
 -- SCHEMA here
-Create table If Not Exists Employee (empId int, name varchar(255), supervisor int, salary int);
-Create table If Not Exists Bonus (empId int, bonus int);
-Truncate table Employee;
-insert into Employee (empId, name, supervisor, salary) values ('3', 'Brad', NULL, '4000');
-insert into Employee (empId, name, supervisor, salary) values ('1', 'John', '3', '1000');
-insert into Employee (empId, name, supervisor, salary) values ('2', 'Dan', '3', '2000');
-insert into Employee (empId, name, supervisor, salary) values ('4', 'Thomas', '3', '4000');
-Truncate table Bonus;
-insert into Bonus (empId, bonus) values ('2', '500');
-insert into Bonus (empId, bonus) values ('4', '2000');
+Create table If Not Exists Activity (machine_id int, process_id int, activity_type ENUM('start', 'end'), timestamp float);
+Truncate table Activity;
+insert into Activity (machine_id, process_id, activity_type, timestamp) values ('0', '0', 'start', '0.712');
+insert into Activity (machine_id, process_id, activity_type, timestamp) values ('0', '0', 'end', '1.52');
+insert into Activity (machine_id, process_id, activity_type, timestamp) values ('0', '1', 'start', '3.14');
+insert into Activity (machine_id, process_id, activity_type, timestamp) values ('0', '1', 'end', '4.12');
+insert into Activity (machine_id, process_id, activity_type, timestamp) values ('1', '0', 'start', '0.55');
+insert into Activity (machine_id, process_id, activity_type, timestamp) values ('1', '0', 'end', '1.55');
+insert into Activity (machine_id, process_id, activity_type, timestamp) values ('1', '1', 'start', '0.43');
+insert into Activity (machine_id, process_id, activity_type, timestamp) values ('1', '1', 'end', '1.42');
+insert into Activity (machine_id, process_id, activity_type, timestamp) values ('2', '0', 'start', '4.1');
+insert into Activity (machine_id, process_id, activity_type, timestamp) values ('2', '0', 'end', '4.512');
+insert into Activity (machine_id, process_id, activity_type, timestamp) values ('2', '1', 'start', '2.5');
+insert into Activity (machine_id, process_id, activity_type, timestamp) values ('2', '1', 'end', '5');
