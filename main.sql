@@ -4,14 +4,22 @@ use leetcode;
 SELECT
     *
 FROM
-    Queries;
+    Users;
+
+SELECT
+    *
+FROM
+    Register;
 
 -- Queries here
 SELECT
-    query_name,
-    ROUND(AVG(rating / position), 2) quality,
-    ROUND(AVG(rating < 3) * 100, 2) poor_query_percentage
+    contest_id,
+    ROUND(COUNT(contest_id) / (SELECT COUNT(user_id) FROM Users) * 100, 2) percentage
 FROM
-    Queries
+    Register
+    LEFT JOIN Users USING(user_id)
 GROUP BY
-    query_name
+    contest_id
+ORDER BY
+    percentage DESC,
+    contest_id;
