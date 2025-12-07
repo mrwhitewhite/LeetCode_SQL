@@ -14,19 +14,12 @@ FROM
 -- Queries here
 SELECT
     contest_id,
-    ROUND(COUNT(contest_id) / n * 100, 2) percentage
+    ROUND(COUNT(contest_id) / (SELECT COUNT(user_id) FROM Users) * 100, 2) percentage
 FROM
     Register
     LEFT JOIN Users USING(user_id)
-    CROSS JOIN (
-        SELECT
-            COUNT(DISTINCT user_id) n
-        FROM
-            users
-    ) as tot
 GROUP BY
-    contest_id,
-    n
+    contest_id
 ORDER BY
     percentage DESC,
     contest_id;
