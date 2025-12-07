@@ -5,11 +5,11 @@ CREATE DATABASE IF NOT EXISTS leetcode DEFAULT CHARACTER SET utf8 DEFAULT COLLAT
 USE leetcode;
 
 -- SCHEMA here
-Create table If Not Exists Transactions (id int, country varchar(4), state enum('approved', 'declined'), amount int, trans_date date);
-TRUNCATE TABLE Transactions; -- Optional: Clears any existing data if the table already exists
-
-INSERT INTO Transactions (id, country, state, amount, trans_date) VALUES
-(121, 'US', 'approved', 1000, '2018-12-18'),
-(122, 'US', 'declined', 2000, '2018-12-19'),
-(123, 'US', 'approved', 2000, '2019-01-01'),
-(124, NULL, 'approved', 2000, '2019-01-07');
+Create table If Not Exists Queries (query_name varchar(30), result varchar(50), position int, rating int);
+Truncate table Queries;
+insert into Queries (query_name, result, position, rating) values ('Dog', 'Golden Retriever', '1', '5');
+insert into Queries (query_name, result, position, rating) values ('Dog', 'German Shepherd', '2', '5');
+insert into Queries (query_name, result, position, rating) values ('Dog', 'Mule', '200', '1');
+insert into Queries (query_name, result, position, rating) values ('Cat', 'Shirazi', '5', '2');
+insert into Queries (query_name, result, position, rating) values ('Cat', 'Siamese', '3', '3');
+insert into Queries (query_name, result, position, rating) values ('Cat', 'Sphynx', '7', '4');

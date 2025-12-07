@@ -4,18 +4,14 @@ use leetcode;
 SELECT
     *
 FROM
-    Transactions;
+    Queries;
 
 -- Queries here
 SELECT
-    DATE_FORMAT(trans_date, '%Y-%m') month,
-    country,
-    COUNT(*) trans_count,
-    SUM(state = "approved") approved_count,
-    SUM(amount) trans_total_amount,
-    SUM(IF(state = "approved", amount, 0)) approved_total_amount
+    query_name,
+    ROUND(AVG(rating / position), 2) quality,
+    ROUND(AVG(rating < 3) * 100, 2) poor_query_percentage
 FROM
-    Transactions t
+    Queries
 GROUP BY
-    month,
-    country
+    query_name
