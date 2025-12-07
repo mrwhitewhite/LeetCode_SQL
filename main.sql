@@ -1,6 +1,8 @@
 use leetcode;
 
 -- show table
-SELECT * FROM TableName;
+SELECT * FROM Students;
+SELECT * FROM Subjects;
+SELECT * FROM Examinations;
 
 -- Queries here
