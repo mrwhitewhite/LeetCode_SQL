@@ -4,36 +4,20 @@ use leetcode;
 SELECT
     *
 FROM
-    Students;
+    Employee;
 
 SELECT
     *
 FROM
-    Subjects;
-
-SELECT
-    *
-FROM
-    Examinations;
+    Bonus;
 
 -- Queries here
 SELECT
-    student_id,
-    student_name,
-    subject_name,
-    IFNULL(attended_exams, 0) AS attended_exams
+    name,
+    bonus
 FROM
-    Students
-    CROSS JOIN Subjects
-    LEFT JOIN (
-        SELECT
-            student_id,
-            subject_name,
-            COUNT(student_id) AS attended_exams
-        FROM
-            Examinations
-        GROUP BY
-            student_id,
-            subject_name
-    ) AS T_count USING(student_id, subject_name)
-ORDER BY student_id, subject_name
+    Employee
+    LEFT JOIN Bonus USING(empId)
+WHERE
+    bonus IS NULL
+    OR bonus < 1000

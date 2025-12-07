@@ -1,31 +1,15 @@
-DROP DATABASE leetcode;
-
 CREATE DATABASE IF NOT EXISTS leetcode DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;
 
 USE leetcode;
 
 -- SCHEMA here
-Create table If Not Exists Students (student_id int, student_name varchar(20));
-Create table If Not Exists Subjects (subject_name varchar(20));
-Create table If Not Exists Examinations (student_id int, subject_name varchar(20));
-Truncate table Students;
-insert into Students (student_id, student_name) values ('1', 'Alice');
-insert into Students (student_id, student_name) values ('2', 'Bob');
-insert into Students (student_id, student_name) values ('13', 'John');
-insert into Students (student_id, student_name) values ('6', 'Alex');
-Truncate table Subjects;
-insert into Subjects (subject_name) values ('Math');
-insert into Subjects (subject_name) values ('Physics');
-insert into Subjects (subject_name) values ('Programming');
-Truncate table Examinations;
-insert into Examinations (student_id, subject_name) values ('1', 'Math');
-insert into Examinations (student_id, subject_name) values ('1', 'Physics');
-insert into Examinations (student_id, subject_name) values ('1', 'Programming');
-insert into Examinations (student_id, subject_name) values ('2', 'Programming');
-insert into Examinations (student_id, subject_name) values ('1', 'Physics');
-insert into Examinations (student_id, subject_name) values ('1', 'Math');
-insert into Examinations (student_id, subject_name) values ('13', 'Math');
-insert into Examinations (student_id, subject_name) values ('13', 'Programming');
-insert into Examinations (student_id, subject_name) values ('13', 'Physics');
-insert into Examinations (student_id, subject_name) values ('2', 'Math');
-insert into Examinations (student_id, subject_name) values ('1', 'Math');
+Create table If Not Exists Employee (empId int, name varchar(255), supervisor int, salary int);
+Create table If Not Exists Bonus (empId int, bonus int);
+Truncate table Employee;
+insert into Employee (empId, name, supervisor, salary) values ('3', 'Brad', NULL, '4000');
+insert into Employee (empId, name, supervisor, salary) values ('1', 'John', '3', '1000');
+insert into Employee (empId, name, supervisor, salary) values ('2', 'Dan', '3', '2000');
+insert into Employee (empId, name, supervisor, salary) values ('4', 'Thomas', '3', '4000');
+Truncate table Bonus;
+insert into Bonus (empId, bonus) values ('2', '500');
+insert into Bonus (empId, bonus) values ('4', '2000');
