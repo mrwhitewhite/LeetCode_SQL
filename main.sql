@@ -4,19 +4,20 @@ use leetcode;
 SELECT
     *
 FROM
-    Signups;
-
-SELECT
-    *
-FROM
-    Confirmations;
+    Employee;
 
 -- Queries here
 SELECT
-    user_id,
-    IFNULL(ROUND(SUM(action = "confirmed") / COUNT(action), 2), 0) AS confirmation_rate
+    name
 FROM
-    Signups s
-    LEFT JOIN Confirmations c USING(user_id)
-GROUP BY
-    user_id
+    Employee e
+    INNER JOIN (
+        SELECT
+            managerId
+        FROM
+            Employee
+        GROUP BY
+            managerId
+        HAVING
+            COUNT(managerId) >= 5
+    ) as m ON m.managerId = e.Id -- inner join the full table is expensive, filter be4 join
