@@ -4,19 +4,33 @@ use leetcode;
 SELECT
     *
 FROM
-    Project;
+    Prices;
 
 SELECT
     *
 FROM
-    Employee;
+    UnitsSold;
 
 -- Queries here
 SELECT
-    project_id,
-    ROUND(AVG(experience_years), 2) average_years
+    p.product_id,
+    IFNULL(
+        ROUND(
+            SUM(p.price * u.units) / SUM(u.units),
+            2
+        ),
+        0
+    ) AS average_price
 FROM
-    Project p
-    LEFT JOIN Employee e USING(employee_id)
+    Prices p
+    LEFT JOIN UnitsSold u ON (
+        (
+            u.purchase_date BETWEEN p.start_date
+            AND p.end_date
+        )
+        AND (
+            p.product_id = u.product_id
+        )
+    )
 GROUP BY
-    project_id
+    product_id
