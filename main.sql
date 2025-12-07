@@ -4,23 +4,22 @@ use leetcode;
 SELECT
     *
 FROM
-    Activity;
+    Delivery;
 
 -- Queries here
 SELECT
     ROUND(
-        SUM(b.player_id IS NOT NULL) / COUNT(DISTINCT a.player_id),
+        AVG(order_date = customer_pref_delivery_date) * 100,
         2
-    ) fraction
+    ) immediate_percentage
 FROM
-    Activity a
-    LEFT JOIN (
+    Delivery d
+    INNER JOIN (
         SELECT
-            player_id,
-            MIN(event_date) firstLoginDate
+            customer_id,
+            MIN(order_date) order_date
         FROM
-            Activity
+            Delivery d
         GROUP BY
-            player_id
-    ) b ON a.player_id = b.player_id
-    AND a.event_date = DATE_ADD(b.firstLoginDate, INTERVAL 1 DAY)
+            customer_id
+    ) T USING(customer_id, order_date)
