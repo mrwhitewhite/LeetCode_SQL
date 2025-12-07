@@ -1,0 +1,6 @@
+DROP DATABASE leetcode;
+CREATE DATABASE IF NOT EXISTS leetcode DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;
+
+USE leetcode;
+
+-- SCHEMA here
