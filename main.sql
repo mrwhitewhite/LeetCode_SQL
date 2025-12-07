@@ -1,7 +1,11 @@
 use leetcode;
 
 -- show table
-SELECT * FROM Tweets;
+SELECT * FROM Views;
 
 -- Queries here
-SELECT tweet_id FROM Tweets WHERE LENGTH(content) > 15;
+SELECT DISTINCT (author_id) AS "id"
+FROM Views
+WHERE
+    author_id = viewer_id
+ORDER BY author_id;
