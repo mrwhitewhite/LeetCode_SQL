@@ -4,22 +4,18 @@ use leetcode;
 SELECT
     *
 FROM
-    Delivery;
+    Transactions;
 
 -- Queries here
 SELECT
-    ROUND(
-        AVG(order_date = customer_pref_delivery_date) * 100,
-        2
-    ) immediate_percentage
+    DATE_FORMAT(trans_date, '%Y-%m') month,
+    country,
+    COUNT(*) trans_count,
+    SUM(state = "approved") approved_count,
+    SUM(amount) trans_total_amount,
+    SUM(IF(state = "approved", amount, 0)) approved_total_amount
 FROM
-    Delivery d
-    INNER JOIN (
-        SELECT
-            customer_id,
-            MIN(order_date) order_date
-        FROM
-            Delivery d
-        GROUP BY
-            customer_id
-    ) T USING(customer_id, order_date)
+    Transactions t
+GROUP BY
+    month,
+    country
