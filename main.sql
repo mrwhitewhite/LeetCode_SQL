@@ -4,22 +4,19 @@ use leetcode;
 SELECT
     *
 FROM
-    Users;
+    Project;
 
 SELECT
     *
 FROM
-    Register;
+    Employee;
 
 -- Queries here
 SELECT
-    contest_id,
-    ROUND(COUNT(contest_id) / (SELECT COUNT(user_id) FROM Users) * 100, 2) percentage
+    project_id,
+    ROUND(AVG(experience_years), 2) average_years
 FROM
-    Register
-    LEFT JOIN Users USING(user_id)
+    Project p
+    LEFT JOIN Employee e USING(employee_id)
 GROUP BY
-    contest_id
-ORDER BY
-    percentage DESC,
-    contest_id;
+    project_id
