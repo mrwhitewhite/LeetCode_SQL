@@ -1,11 +1,8 @@
 use leetcode;
 
 -- show table
-SELECT * FROM Customer;
+SELECT * FROM Products;
 
 -- Queries here
-SELECT name
-FROM Customer
-WHERE
-    referee_id IS NULL
-    OR referee_id != 2;
+SELECT product_id FROM Products
+WHERE low_fats='Y' and recyclable='Y';
