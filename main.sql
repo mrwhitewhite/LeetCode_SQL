@@ -4,14 +4,19 @@ use leetcode;
 SELECT
     *
 FROM
-    cinema;
+    Signups;
 
--- Queries here
 SELECT
     *
 FROM
-    cinema
-WHERE
-    id % 2 = 1
-    AND description != 'boring'
-ORDER BY rating DESC
+    Confirmations;
+
+-- Queries here
+SELECT
+    user_id,
+    IFNULL(ROUND(SUM(action = "confirmed") / COUNT(action), 2), 0) AS confirmation_rate
+FROM
+    Signups s
+    LEFT JOIN Confirmations c USING(user_id)
+GROUP BY
+    user_id
