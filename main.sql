@@ -4,23 +4,13 @@ use leetcode;
 SELECT
     *
 FROM
-    Activity;
+    Weather;
 
 -- Queries here
 SELECT
-    machine_id,
-    ROUND(AVG(processing_time), 3) as 'processing_time'
+    Today.id
 FROM
-    (
-        SELECT
-            machine_id,
-            process_id,
-            MAX(timestamp) - MIN(timestamp) as "processing_time"
-        FROM
-            Activity
-        GROUP BY
-            machine_id,
-            process_id
-    ) AS T_agg1
-GROUP BY
-    machine_id
+    Weather AS Today
+    INNER JOIN Weather as Yest ON Today.recordDate = DATE_ADD(Yest.recordDate, INTERVAL 1 DAY)
+WHERE
+    Today.temperature > Yest.temperature
