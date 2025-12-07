@@ -5,21 +5,27 @@ CREATE DATABASE IF NOT EXISTS leetcode DEFAULT CHARACTER SET utf8 DEFAULT COLLAT
 USE leetcode;
 
 -- SCHEMA here
-DROP TABLE IF EXISTS Employee;
-Create table If Not Exists Employee (id int, name varchar(255), department varchar(255), managerId int);
-Truncate table Employee;
-TRUNCATE TABLE Employee; -- Optional: Clears any existing data if the table already exists
-
-INSERT INTO Employee (id, name, department, managerId) VALUES
-(101, 'John', 'A', NULL),
-(102, 'Dan', 'A', 101),
-(103, 'James', 'A', 101),
-(104, 'Amy', 'A', 101),
-(105, 'Anne', 'A', 101),
-(106, 'Ron', 'B', 101),
-(111, 'John', 'A', NULL),
-(112, 'Dan', 'A', 111),
-(113, 'James', 'A', 111),
-(114, 'Amy', 'A', 111),
-(115, 'Anne', 'A', 111),
-(116, 'Ron', 'B', 111);
+Create table If Not Exists Students (student_id int, student_name varchar(20));
+Create table If Not Exists Subjects (subject_name varchar(20));
+Create table If Not Exists Examinations (student_id int, subject_name varchar(20));
+Truncate table Students;
+insert into Students (student_id, student_name) values ('1', 'Alice');
+insert into Students (student_id, student_name) values ('2', 'Bob');
+insert into Students (student_id, student_name) values ('13', 'John');
+insert into Students (student_id, student_name) values ('6', 'Alex');
+Truncate table Subjects;
+insert into Subjects (subject_name) values ('Math');
+insert into Subjects (subject_name) values ('Physics');
+insert into Subjects (subject_name) values ('Programming');
+Truncate table Examinations;
+insert into Examinations (student_id, subject_name) values ('1', 'Math');
+insert into Examinations (student_id, subject_name) values ('1', 'Physics');
+insert into Examinations (student_id, subject_name) values ('1', 'Programming');
+insert into Examinations (student_id, subject_name) values ('2', 'Programming');
+insert into Examinations (student_id, subject_name) values ('1', 'Physics');
+insert into Examinations (student_id, subject_name) values ('1', 'Math');
+insert into Examinations (student_id, subject_name) values ('13', 'Math');
+insert into Examinations (student_id, subject_name) values ('13', 'Programming');
+insert into Examinations (student_id, subject_name) values ('13', 'Physics');
+insert into Examinations (student_id, subject_name) values ('2', 'Math');
+insert into Examinations (student_id, subject_name) values ('1', 'Math');

@@ -4,20 +4,36 @@ use leetcode;
 SELECT
     *
 FROM
-    Employee;
+    Students;
+
+SELECT
+    *
+FROM
+    Subjects;
+
+SELECT
+    *
+FROM
+    Examinations;
 
 -- Queries here
 SELECT
-    name
+    student_id,
+    student_name,
+    subject_name,
+    IFNULL(attended_exams, 0) AS attended_exams
 FROM
-    Employee e
-    INNER JOIN (
+    Students
+    CROSS JOIN Subjects
+    LEFT JOIN (
         SELECT
-            managerId
+            student_id,
+            subject_name,
+            COUNT(student_id) AS attended_exams
         FROM
-            Employee
+            Examinations
         GROUP BY
-            managerId
-        HAVING
-            COUNT(managerId) >= 5
-    ) as m ON m.managerId = e.Id -- inner join the full table is expensive, filter be4 join
+            student_id,
+            subject_name
+    ) AS T_count USING(student_id, subject_name)
+ORDER BY student_id, subject_name
