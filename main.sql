@@ -1,6 +1,7 @@
 use leetcode;
 
 -- show table
-SELECT * FROM TableName;
+SELECT * FROM Prices;
+SELECT * FROM UnitsSold;
 
 -- Queries here
