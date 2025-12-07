@@ -10,17 +10,14 @@ FROM
 SELECT
     name
 FROM
-    (
+    Employee e
+    INNER JOIN (
         SELECT
-            managerId,
-            COUNT(id) AS report_count
+            managerId
         FROM
             Employee
-        WHERE
-            managerId IS NOT NULL
         GROUP BY
             managerId
         HAVING
-            report_count >= 5
-    ) as T_id
-    INNER JOIN Employee e ON T_id.managerId = e.id
+            COUNT(managerId) >= 5
+    ) as m ON m.managerId = e.Id -- inner join the full table is expensive, filter be4 join
