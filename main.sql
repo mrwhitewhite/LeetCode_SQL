@@ -1,6 +1,9 @@
 use leetcode;
 
 -- show table
-SELECT * FROM TableName;
+SELECT
+    *
+FROM
+    Courses;
 
 -- Queries here
