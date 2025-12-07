@@ -1,6 +1,7 @@
 use leetcode;
 
 -- show table
-SELECT * FROM TableName;
+SELECT * FROM Signups;
+SELECT * FROM Confirmations;
 
 -- Queries here
