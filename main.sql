@@ -1,11 +1,11 @@
 use leetcode;
 
 -- show table
-SELECT * FROM Views;
+SELECT * FROM World;
 
 -- Queries here
-SELECT DISTINCT (author_id) AS "id"
-FROM Views
+SELECT name, population, area
+from World
 WHERE
-    author_id = viewer_id
-ORDER BY author_id;
+    area >= 3000000
+    OR population >= 25000000;
