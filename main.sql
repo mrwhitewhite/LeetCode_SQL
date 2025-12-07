@@ -4,25 +4,16 @@ use leetcode;
 SELECT
     *
 FROM
-    Sales;
+    Activity;
 
 -- Queries here
-WITH m AS (
-    SELECT
-        product_id,
-        MIN(year) first_year
-    FROM
-        Sales
-    GROUP BY
-        product_id
-)
 SELECT
-    product_id,
-    first_year,
-    quantity,
-    price
+    activity_date day,
+    COUNT(DISTINCT user_id) active_users
 FROM
-    Sales
-    LEFT JOIN m USING(product_id)
+    Activity
 WHERE
-    year = first_year
+    activity_date BETWEEN DATE(DATE_SUB("2019-07-27", INTERVAL 29 DAY))
+    AND DATE("2019-07-27")
+GROUP BY
+    activity_date
