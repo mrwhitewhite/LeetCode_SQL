@@ -4,13 +4,25 @@ use leetcode;
 SELECT
     *
 FROM
-    Weather;
+    Visits;
+
+SELECT
+    *
+FROM
+    Transactions;
 
 -- Queries here
 SELECT
-    Today.id
+    customer_id,
+    COUNT(customer_id) AS count_no_trans
 FROM
-    Weather AS Today
-    INNER JOIN Weather as Yest ON Today.recordDate = DATE_ADD(Yest.recordDate, INTERVAL 1 DAY)
+    Visits
 WHERE
-    Today.temperature > Yest.temperature
+    Visits.visit_id NOT IN (
+        SELECT
+            DISTINCT(visit_id)
+        FROM
+            Transactions
+    )
+GROUP BY
+    customer_id
