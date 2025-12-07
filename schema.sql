@@ -3,13 +3,15 @@ CREATE DATABASE IF NOT EXISTS leetcode DEFAULT CHARACTER SET utf8 DEFAULT COLLAT
 USE leetcode;
 
 -- SCHEMA here
-Create table If Not Exists Sales (sale_id int, product_id int, year int, quantity int, price int);
-Create table If Not Exists Product (product_id int, product_name varchar(10));
-Truncate table Sales;
-insert into Sales (sale_id, product_id, year, quantity, price) values ('1', '100', '2008', '10', '5000');
-insert into Sales (sale_id, product_id, year, quantity, price) values ('2', '100', '2009', '12', '5000');
-insert into Sales (sale_id, product_id, year, quantity, price) values ('7', '200', '2011', '15', '9000');
-Truncate table Product;
-insert into Product (product_id, product_name) values ('100', 'Nokia');
-insert into Product (product_id, product_name) values ('200', 'Apple');
-insert into Product (product_id, product_name) values ('300', 'Samsung');
+Create table If Not Exists Employees (id int, name varchar(20));
+Create table If Not Exists EmployeeUNI (id int, unique_id int);
+Truncate table Employees;
+insert into Employees (id, name) values ('1', 'Alice');
+insert into Employees (id, name) values ('7', 'Bob');
+insert into Employees (id, name) values ('11', 'Meir');
+insert into Employees (id, name) values ('90', 'Winston');
+insert into Employees (id, name) values ('3', 'Jonathan');
+Truncate table EmployeeUNI;
+insert into EmployeeUNI (id, unique_id) values ('3', '1');
+insert into EmployeeUNI (id, unique_id) values ('11', '2');
+insert into EmployeeUNI (id, unique_id) values ('90', '3');

@@ -1,11 +1,11 @@
 use leetcode;
 
 -- show table
-SELECT * FROM Sales;
+SELECT * FROM Employees;
 
-SELECT * FROM Product;
+SELECT * FROM EmployeeUNI;
 
 -- Queries here
-SELECT product_name, year, price
-FROM Sales
-    LEFT JOIN Product ON Sales.product_id = Product.product_id;
+SELECT unique_id, name  FROM Employees
+LEFT JOIN EmployeeUNI
+ON EmployeeUNI.id = Employees.id
