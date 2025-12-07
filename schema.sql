@@ -1,25 +1,44 @@
 DROP DATABASE leetcode;
+
 CREATE DATABASE IF NOT EXISTS leetcode DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;
 
 USE leetcode;
 
 -- SCHEMA here
-Create table If Not Exists Users (user_id int, user_name varchar(20));
-Create table If Not Exists Register (contest_id int, user_id int);
-Truncate table Users;
-insert into Users (user_id, user_name) values ('6', 'Alice');
-insert into Users (user_id, user_name) values ('2', 'Bob');
-insert into Users (user_id, user_name) values ('7', 'Alex');
-Truncate table Register;
-insert into Register (contest_id, user_id) values ('215', '6');
-insert into Register (contest_id, user_id) values ('209', '2');
-insert into Register (contest_id, user_id) values ('208', '2');
-insert into Register (contest_id, user_id) values ('210', '6');
-insert into Register (contest_id, user_id) values ('208', '6');
-insert into Register (contest_id, user_id) values ('209', '7');
-insert into Register (contest_id, user_id) values ('209', '6');
-insert into Register (contest_id, user_id) values ('215', '7');
-insert into Register (contest_id, user_id) values ('208', '7');
-insert into Register (contest_id, user_id) values ('210', '2');
-insert into Register (contest_id, user_id) values ('207', '2');
-insert into Register (contest_id, user_id) values ('210', '7');
+CREATE TABLE IF NOT EXISTS Users (
+    user_id INT PRIMARY KEY,
+    user_name VARCHAR(255)
+);
+
+TRUNCATE TABLE Users;
+
+-- Optional: Clears any existing data if the table already exists
+INSERT INTO
+    Users (user_id, user_name)
+VALUES
+    (631, 'Freida'),
+    (112, 'Rachel'),
+    (392, 'Naftali'),
+    (674, 'Tikvah'),
+    (543, 'Adam'),
+    (675, 'Yehudah'),
+    (447, 'Moshe'),
+    (784, 'Naftali'),
+    (268, 'Freida');
+
+CREATE TABLE IF NOT EXISTS Register (
+    contest_id INT,
+    user_id INT,
+    PRIMARY KEY (contest_id, user_id)
+);
+
+TRUNCATE TABLE Register;
+
+-- Optional: Clears any existing data if the table already exists
+INSERT INTO
+    Register (contest_id, user_id)
+VALUES
+    (187, 674),
+    (187, 631),
+    (187, 784),
+    (187, 447);
