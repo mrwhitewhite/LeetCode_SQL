@@ -1,6 +1,7 @@
 use leetcode;
 
 -- show table
-SELECT * FROM TableName;
+SELECT * FROM Project;
+SELECT * FROM Employee;
 
 -- Queries here
