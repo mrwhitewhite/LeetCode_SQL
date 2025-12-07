@@ -4,16 +4,13 @@ use leetcode;
 SELECT
     *
 FROM
-    Activity;
+    Teacher;
 
 -- Queries here
 SELECT
-    activity_date day,
-    COUNT(DISTINCT user_id) active_users
+    teacher_id,
+    COUNT(DISTINCT subject_id) cnt
 FROM
-    Activity
-WHERE
-    activity_date BETWEEN DATE(DATE_SUB("2019-07-27", INTERVAL 29 DAY))
-    AND DATE("2019-07-27")
+    Teacher
 GROUP BY
-    activity_date
+    teacher_id
