@@ -1,16 +1,6 @@
 use leetcode;
 
 -- show table
-SELECT
-    *
-FROM
-    Courses;
+SELECT * FROM TableName;
 
 -- Queries here
-SELECT
-    class
-FROM
-    Courses
-GROUP BY
-    class
-HAVING COUNT(student) >= 5
