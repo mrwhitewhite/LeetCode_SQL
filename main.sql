@@ -1,11 +1,7 @@
 use leetcode;
 
 -- show table
-SELECT * FROM Employees;
-
-SELECT * FROM EmployeeUNI;
+SELECT * FROM Tweets;
 
 -- Queries here
-SELECT unique_id, name  FROM Employees
-LEFT JOIN EmployeeUNI
-ON EmployeeUNI.id = Employees.id
+SELECT tweet_id FROM Tweets WHERE LENGTH(content) > 15;
