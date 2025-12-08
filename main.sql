@@ -1,6 +1,8 @@
 use leetcode;
 
 -- show table
-SELECT * FROM TableName;
+SELECT * FROM Movies;
+SELECT * FROM Users;
+SELECT * FROM MovieRating;
 
 -- Queries here
