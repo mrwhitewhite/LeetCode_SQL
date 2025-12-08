@@ -7,18 +7,20 @@ FROM
     Logs;
 
 -- Queries here
-WITH t AS (
-    SELECT
-        num num1,
-        LAG(num, 1) OVER() num2,
-        LAG(num, 2) OVER() num3
-    FROM
-        Logs
-)
 SELECT
-    DISTINCT num1 ConsecutiveNums
+    DISTINCT l1.num ConsecutiveNums
 FROM
-    t
+    Logs l1
+    CROSS JOIN Logs l2
+    CROSS JOIN Logs l3
 WHERE
-    num1 = num2
-    AND num2 = num3
+    (
+        -- get 3 consequtive num in single row
+        l1.id = l2.id -1
+        AND l2.id = l3.id -1
+    )
+    AND (
+        -- make sure 3 conseq number are same
+        l1.num = l2.num
+        AND l2.num = l3.num
+    )
