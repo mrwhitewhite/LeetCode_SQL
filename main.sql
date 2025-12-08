@@ -7,22 +7,27 @@ FROM
     Queue;
 
 -- Queries here
+WITH cum AS (
+    SELECT
+        person_id,
+        person_name,
+        SUM(weight) OVER(
+            ORDER BY
+                turn
+        ) cum_sum
+    FROM
+        Queue
+)
 SELECT
-    DISTINCT LAST_VALUE(person_name) OVER(
-        ORDER BY
-            cum_sum ASC ROWS BETWEEN UNBOUNDED PRECEDING
-            AND UNBOUNDED FOLLOWING
-    ) person_name
+    person_name
 FROM
-    (
-        SELECT
-            person_name,
-            SUM(weight) OVER(
-                ORDER BY
-                    turn
-            ) cum_sum
-        FROM
-            Queue
-    ) cum_sum
+    cum
 WHERE
-    cum_sum <= 1000
+    cum_sum =(
+        SELECT
+            max(cum_sum)
+        FROM
+            cum
+        WHERE
+            cum_sum <= 1000
+    )
