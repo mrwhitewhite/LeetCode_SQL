@@ -7,28 +7,20 @@ FROM
     Seat;
 
 -- Queries here
-WITH t2 AS (
-    SELECT
-        id,
-        IF(
-            id % 2 = 0,
-            even,
-            odd
-        ) student_changed,
-        student
-    FROM
-        (
-            SELECT
-                id,
-                student,
-                LAG(student) OVER(ORDER BY id) even,
-                LEAD(student) OVER(ORDER BY id) odd
-            FROM
-                Seat
-        ) t
-)
 SELECT
-    id,
-    IFNULL(student_changed, student) student
+    CASE
+        WHEN id % 2 = 0 THEN id - 1
+        WHEN id % 2 = 1
+        AND id <(
+            SELECT
+                MAX(id)
+            FROM
+                SEAT
+        ) THEN id + 1
+        ELSE id
+    END AS id,
+    student
 FROM
-    t2
+    Seat
+ORDER BY
+    id
