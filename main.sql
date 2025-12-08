@@ -21,8 +21,8 @@ WITH t2 AS (
             SELECT
                 id,
                 student,
-                LAG(student) OVER() even,
-                LEAD(student) OVER() odd
+                LAG(student) OVER(ORDER BY id) even,
+                LEAD(student) OVER(ORDER BY id) odd
             FROM
                 Seat
         ) t
