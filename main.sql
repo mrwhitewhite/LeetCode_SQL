@@ -1,6 +1,6 @@
 use leetcode;
 
 -- show table
-SELECT * FROM TableName;
+SELECT * FROM Logs;
 
 -- Queries here
