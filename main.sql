@@ -7,48 +7,41 @@ FROM
     Accounts;
 
 -- Queries here
-WITH t2 AS (
-    WITH t1 AS (
-        SELECT
-            IF(
-                income < 20000,
-                "Low Salary",
-                IF(
-                    income > 50000,
-                    "High Salary",
-                    "Average Salary"
-                )
-            ) category
-        FROM
-            Accounts
-    )
+WITH t_count AS (
     SELECT
         category,
         COUNT(category) accounts_count
     FROM
-        t1
+        (
+            SELECT
+                IF(
+                    income < 20000,
+                    "Low Salary",
+                    IF(
+                        income > 50000,
+                        "High Salary",
+                        "Average Salary"
+                    )
+                ) category
+            FROM
+                Accounts
+        ) t_freq
     GROUP BY
         category
-    UNION
-    ALL
+),
+t_cat AS (
     SELECT
-        "High Salary" category,
-        0 accounts_count
+        "High Salary" category
     UNION
-    ALL
     SELECT
-        "Average Salary" category,
-        0 accounts_count
+        "Average Salary" category
     UNION
-    ALL
     SELECT
-        "Low Salary" category,
-        0 accounts_count
+        "Low Salary" category
 )
 SELECT
     category,
-    MAX(accounts_count) accounts_count
+    IFNULL(accounts_count, 0) accounts_count
 FROM
-    t2
-GROUP BY
-    category
+    t_cat
+    LEFT JOIN t_count USING(category)
