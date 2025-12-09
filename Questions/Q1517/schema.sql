@@ -22,4 +22,6 @@ VALUES
     (373, 'Yaffah', 'Yaffah_-w51KKjZ@leetcode.com'),
     (430, 'Eliyahu', '-Eliyahu@leetcode.com'),
     (471, 'Levi', 'Levi_.r@leetcode.com'),
+    (471, 'Levi', 'Levi_.r@leetcode?com'),
+    (471, 'Levi', 'Levi_.r@leetcode.COM'),
     (784, 'Yehudah', 'Yehudah._Il@leetcode.com');
