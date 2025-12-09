@@ -1,15 +1,25 @@
 DROP DATABASE leetcode;
+
 CREATE DATABASE IF NOT EXISTS leetcode DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;
 
 USE leetcode;
 
 -- SCHEMA here
 Create table If Not Exists Users (user_id int, name varchar(30), mail varchar(50));
-Truncate table Users;
-insert into Users (user_id, name, mail) values ('1', 'Winston', 'winston@leetcode.com');
-insert into Users (user_id, name, mail) values ('2', 'Jonathan', 'jonathanisgreat');
-insert into Users (user_id, name, mail) values ('3', 'Annabelle', 'bella-@leetcode.com');
-insert into Users (user_id, name, mail) values ('4', 'Sally', 'sally.come@leetcode.com');
-insert into Users (user_id, name, mail) values ('5', 'Marwan', 'quarz#2020@leetcode.com');
-insert into Users (user_id, name, mail) values ('6', 'David', 'david69@gmail.com');
-insert into Users (user_id, name, mail) values ('7', 'Shapiro', '.shapo@leetcode.com');
+
+TRUNCATE TABLE Users;
+
+-- Optional: Clears any existing data
+INSERT INTO
+    Users (user_id, name, mail)
+VALUES
+    (296, 'Gavriel', 'Gavriel5bpr@leetcode.com'),
+    (121, 'Ezra', 'EzraX'),
+    (39, 'Dalia', 'DaliapCvpKJe7NU'),
+    (32, 'Gavriel', '-Gavriel@leetcode.com'),
+    (694, 'Benjamin', 'Benjamin._2@leetcode.com'),
+    (287, 'Adam', '-Adam@leetcode.com'),
+    (373, 'Yaffah', 'Yaffah_-w51KKjZ@leetcode.com'),
+    (430, 'Eliyahu', '-Eliyahu@leetcode.com'),
+    (471, 'Levi', 'Levi_.r@leetcode.com'),
+    (784, 'Yehudah', 'Yehudah._Il@leetcode.com');
