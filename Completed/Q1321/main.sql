@@ -28,22 +28,14 @@ WITH t2 AS (
             ORDER BY
                 visited_on ROWS BETWEEN 6 PRECEDING
                 AND CURRENT ROW
-        ) amount,
-        ROUND(
-            AVG(amount) OVER(
-                ORDER BY
-                    visited_on ROWS BETWEEN 6 PRECEDING
-                    AND CURRENT ROW
-            ),
-            2
-        ) average_amount
+        ) amount
     FROM
         t
 )
 SELECT
     visited_on,
     amount,
-    average_amount
+    ROUND(amount / 7, 2) average_amount
 FROM
     t2
 WHERE
